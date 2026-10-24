@@ -1,0 +1,142 @@
+/* Lumen Docs 1.0.0 · 清简文档
+   Original standalone Obsidian theme. No imports, scripts, Things or Flow Edit dependency. */
+
+/* @settings
+name: Lumen Docs · 清简文档
+id: lumen-docs
+settings:
+  - id: lumen-page-width
+    title: 正文宽度
+    type: variable-number-slider
+    default: 800
+    min: 560
+    max: 1200
+    step: 40
+    format: px
+  - id: lumen-line-height
+    title: 正文行高
+    type: variable-number-slider
+    default: 1.7
+    min: 1.4
+    max: 2.2
+    step: 0.1
+*/
+
+body {
+  --lumen-docs-theme: 1;
+  --file-line-width: var(--lumen-page-width, 800px);
+  --line-height-normal: var(--lumen-line-height, 1.7);
+  --line-height-tight: 1.4;
+  --h1-size: 2em; --h2-size: 1.5em; --h3-size: 1.25em;
+  --h4-size: 1.1em; --h5-size: 1em; --h6-size: .9375em;
+  --h1-weight: 650; --h2-weight: 600; --h3-weight: 600;
+  --h4-weight: 600; --h5-weight: 600; --h6-weight: 600;
+  --h1-line-height: 1.35; --h2-line-height: 1.4; --h3-line-height: 1.4;
+  --h1-color: var(--text-normal); --h2-color: var(--text-normal); --h3-color: var(--text-normal);
+  --h4-color: var(--text-normal); --h5-color: var(--text-normal); --h6-color: var(--text-muted);
+  --bold-color: inherit; --italic-color: inherit;
+  --p-spacing: 12px; --list-spacing: .25em;
+  --radius-s: 4px; --radius-m: 8px; --radius-l: 10px; --radius-xl: 14px;
+  --link-decoration: underline; --link-external-decoration: underline;
+  --link-decoration-thickness: 1px;
+  --callout-padding: 12px 16px; --callout-title-padding: 0; --callout-content-padding: 0;
+  --callout-radius: 8px; --callout-title-size: 14px; --callout-title-weight: 600;
+  --callout-border-width: 1px; --callout-border-opacity: .2;
+  --blockquote-font-style: normal; --blockquote-color: var(--text-muted);
+  --blockquote-border-thickness: 2px; --blockquote-border-color: var(--lumen-quote-border);
+  --table-cell-padding: 8px 12px; --table-header-background: var(--background-secondary);
+  --table-header-weight: 600;
+  --code-radius: 6px; --code-size: .875em;
+}
+.theme-light {
+  --background-primary: #ffffff; --background-primary-alt: #fafbfc;
+  --background-secondary: #f5f7fa; --background-secondary-alt: #eef1f5;
+  --background-modifier-border: #e2e6ed; --background-modifier-border-hover: #c8ced8;
+  --background-modifier-border-focus: #9db8ff;
+  --background-modifier-hover: rgba(31,35,41,.045);
+  --text-normal: #1f2329; --text-muted: #646a73; --text-faint: #8f959e;
+  --text-accent: #245bdb; --text-accent-hover: #1b49b7;
+  --text-selection: rgba(51,112,255,.18);
+  --interactive-normal: #ffffff; --interactive-hover: #f0f3f8;
+  --interactive-accent: #3370ff; --interactive-accent-hover: #245bdb;
+  --accent-h: 222; --accent-s: 100%; --accent-l: 60%;
+  --color-accent: #3370ff; --lumen-quote-border: #c8cdd5;
+  --lumen-highlight: #fff0b3; --code-background: #f5f7fa;
+  --nav-item-background-active: rgba(51,112,255,.08);
+  --nav-item-color-active: #245bdb;
+}
+.theme-dark {
+  --background-primary: #1e2025; --background-primary-alt: #22252b;
+  --background-secondary: #181b20; --background-secondary-alt: #20232a;
+  --background-modifier-border: #363c46; --background-modifier-border-hover: #4a5361;
+  --background-modifier-border-focus: #5f85cf;
+  --background-modifier-hover: rgba(222,228,238,.055);
+  --text-normal: #dfe4ed; --text-muted: #a3acbb; --text-faint: #7c8798;
+  --text-accent: #82aaff; --text-accent-hover: #a5c1ff;
+  --text-selection: rgba(99,145,255,.25);
+  --interactive-normal: #292e37; --interactive-hover: #333b48;
+  --interactive-accent: #477ce8; --interactive-accent-hover: #5c8df2;
+  --accent-h: 220; --accent-s: 78%; --accent-l: 59%;
+  --color-accent: #82aaff; --lumen-quote-border: #555e6b;
+  --lumen-highlight: #665428; --code-background: #262b33;
+  --nav-item-background-active: rgba(130,170,255,.12);
+  --nav-item-color-active: #a5c1ff;
+}
+
+/* Quiet application chrome; native dimensions, accessibility and controls stay intact. */
+.workspace-ribbon, .workspace-split.mod-left-split, .workspace-split.mod-right-split { background: var(--background-secondary); }
+.nav-file-title, .nav-folder-title { font-size: 13px; border-radius: 5px; }
+.nav-file-title.is-active { color: var(--nav-item-color-active); background: var(--nav-item-background-active); font-weight: 500; }
+.workspace-tab-header.is-active { box-shadow: none; }
+.workspace-tab-header-inner-title { font-size: 13px; }
+
+/* Native editor and renderer selectors: the theme works with every plugin disabled. */
+.markdown-source-view.mod-cm6 .cm-content, .markdown-preview-view { line-height: var(--lumen-line-height, 1.7); }
+.markdown-source-view .inline-title, .markdown-preview-view .inline-title { font-size: 32px; font-weight: 650; line-height: 1.35; margin-bottom: 20px; }
+.markdown-source-view .metadata-container, .markdown-preview-view .metadata-container { margin-bottom: 24px; padding-block: 0; font-size: 13px; --metadata-property-padding: 4px 0; }
+.markdown-source-view.mod-cm6 .cm-content .cm-line.HyperMD-header,
+.markdown-rendered :is(h1,h2,h3,h4,h5,h6) { border-bottom: 0; box-shadow: none; }
+.markdown-source-view.mod-cm6 .cm-content .cm-line.HyperMD-header { padding-top: 12px; padding-bottom: 8px; line-height: 1.4; }
+.markdown-source-view.mod-cm6 .cm-header-1 { font-size: 2em; font-weight: 650; letter-spacing: -.025em; }
+.markdown-source-view.mod-cm6 .cm-header-2 { font-size: 1.5em; font-weight: 600; letter-spacing: -.015em; }
+.markdown-source-view.mod-cm6 .cm-header-3 { font-size: 1.25em; font-weight: 600; }
+.markdown-rendered h1 { font-size: 2em; font-weight: 650; letter-spacing: -.025em; margin: 32px 0 12px !important; }
+.markdown-rendered h2 { font-size: 1.5em; font-weight: 600; margin: 28px 0 10px !important; }
+.markdown-rendered h3 { font-size: 1.25em; font-weight: 600; margin: 24px 0 8px !important; }
+.markdown-rendered p, .markdown-rendered :is(ul,ol) { margin-block: 12px; }
+.markdown-source-view.mod-cm6 .cm-content .cm-line.HyperMD-quote,
+.markdown-rendered blockquote:not(.callout) { border: 0; border-inline-start: 2px solid var(--lumen-quote-border); background: transparent; color: var(--text-muted); font-style: normal; box-shadow: none; }
+.markdown-source-view.mod-cm6 .cm-content .cm-line.HyperMD-quote::before { display: none; }
+.markdown-rendered blockquote { margin: 1em 0; padding: 2px 0 2px 16px; }
+.markdown-rendered blockquote > :first-child { margin-top: 0; }
+.markdown-rendered blockquote > :last-child { margin-bottom: 0; }
+
+.callout { margin: 12px 0; border-inline-start-width: 3px; box-shadow: none; mix-blend-mode: normal;
+  /* RGB channels on old hosts; CSS colors on new hosts. One layer is valid. */
+  background-color: rgba(var(--callout-color), .055);
+  background-image: linear-gradient(color-mix(in srgb, var(--callout-color) 5.5%, transparent), color-mix(in srgb, var(--callout-color) 5.5%, transparent));
+}
+.callout[data-callout="note"] { border-inline-start-width: 1px; }
+.callout-title { gap: 7px; line-height: 1.5; }
+.callout-icon { flex: 0 0 18px; display: flex; align-items: center; }
+.callout-icon .svg-icon { width: 17px; height: 17px; }
+.callout-content { color: var(--text-normal); font-style: normal; }
+.callout-content p { margin-block: .5em; }
+.callout-content > :first-child { margin-top: 6px; }
+.callout-content > :last-child { margin-bottom: 0; }
+.callout-content .callout { margin-block: 10px 0; }
+/* Optional native metadata, e.g. > [!note|compact]. Explicit opt-in avoids
+   guessing whether a visible title was authored. Collapsible notes keep titles. */
+.callout[data-callout="note"][data-callout-metadata="compact"]:not(.is-collapsible) { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 8px; }
+.callout[data-callout="note"][data-callout-metadata="compact"]:not(.is-collapsible) > .callout-title { grid-column: 1; grid-row: 1; padding-top: 4px; }
+.callout[data-callout="note"][data-callout-metadata="compact"]:not(.is-collapsible) > .callout-title > .callout-title-inner { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.callout[data-callout="note"][data-callout-metadata="compact"]:not(.is-collapsible) > .callout-content { grid-column: 2; grid-row: 1; min-width: 0; }
+.callout[data-callout="note"][data-callout-metadata="compact"]:not(.is-collapsible) > .callout-content > :first-child { margin-top: 0; }
+.markdown-source-view.mod-cm6 .cm-highlight, .markdown-rendered mark { background: var(--lumen-highlight); color: inherit; border-radius: 3px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.markdown-rendered table { border-collapse: collapse; font-size: .9375em; }
+.markdown-rendered :is(td,th) { border: 1px solid color-mix(in srgb, var(--background-modifier-border) 65%, transparent); padding: 8px 12px; }
+.markdown-rendered th { background: var(--background-secondary); color: var(--text-normal); font-weight: 600; }
+.markdown-rendered :is(pre,code) { border-radius: var(--code-radius); }
+.markdown-rendered code:not(pre code) { padding: .12em .32em; }
+.markdown-rendered pre code { background: transparent; }
+@media (max-width: 600px) { .markdown-source-view .inline-title, .markdown-preview-view .inline-title { font-size: 28px; } }
