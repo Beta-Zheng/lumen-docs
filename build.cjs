@@ -18,7 +18,7 @@ for (const file of ['theme.css', 'manifest.json']) {
 }
 
 // The folder is convenient for manual installation and offline documentation.
-for (const file of ['theme.css', 'manifest.json', 'README.md', 'CONTRIBUTING.md', 'CHANGELOG.md', 'LICENSE']) {
+for (const file of ['theme.css', 'manifest.json', 'README.md', 'README.zh-CN.md', 'CONTRIBUTING.md', 'CHANGELOG.md', 'LICENSE']) {
   fs.copyFileSync(path.join(__dirname, file), path.join(installation, file));
 }
 fs.cpSync(path.join(__dirname, 'screenshots'), path.join(installation, 'screenshots'), { recursive: true });

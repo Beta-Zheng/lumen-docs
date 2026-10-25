@@ -4,18 +4,32 @@ on:
   push:
     tags:
       - '*'
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing release tag matching manifest.json
+        required: true
+        type: string
 
 permissions:
   contents: write
 
+concurrency:
+  group: theme-release-${{ inputs.tag || github.event.release.tag_name || github.ref_name }}
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ inputs.tag || github.event.release.tag_name || github.ref_name }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.tag || github.event.release.tag_name || github.ref_name }}
       - name: Verify release version
-        env:
-          RELEASE_TAG: ${{ github.ref_name }}
         run: |
           python3 - <<'PY'
           import json, os
@@ -25,14 +39,28 @@ jobs:
           assert os.environ['RELEASE_TAG'] == manifest['version'], 'Tag must match manifest version'
           assert versions[manifest['version']] == manifest['minAppVersion'], 'Update versions.json'
           PY
-      - name: Create draft with theme assets
+      - name: Ensure required release assets
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ github.ref_name }}
         run: |
-          gh release create "$RELEASE_TAG" \
-            --verify-tag \
-            --draft \
-            --title "Lumen Docs $RELEASE_TAG" \
-            --notes-file CHANGELOG.md \
-            manifest.json theme.css
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release upload "$RELEASE_TAG" manifest.json theme.css --clobber
+          else
+            gh release create "$RELEASE_TAG" \
+              --verify-tag \
+              --draft \
+              --title "Lumen Docs $RELEASE_TAG" \
+              --notes-file CHANGELOG.md \
+              manifest.json theme.css
+          fi
+      - name: Verify uploaded install files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download "$RELEASE_TAG" \
+            --pattern manifest.json \
+            --pattern theme.css \
+            --dir "$RUNNER_TEMP/theme-install-files" \
+            --clobber
+          cmp manifest.json "$RUNNER_TEMP/theme-install-files/manifest.json"
+          cmp theme.css "$RUNNER_TEMP/theme-install-files/theme.css"

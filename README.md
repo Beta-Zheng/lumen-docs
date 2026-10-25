@@ -1,34 +1,34 @@
 # Lumen Docs
 
-为 Obsidian 设计的轻量文档主题。以云白、冷灰与蓝色强调构成安静的阅读界面，让标题、引用、代码和提示信息各有层次。
+[English](README.md) · [简体中文](README.zh-CN.md)
 
-支持浅色与深色外观，适用于实时预览和阅读视图。主题使用原生 CSS 变量，不需要额外插件、字体或网络服务。
+Lumen Docs is a lightweight Obsidian theme for clear, comfortable document reading. Cloud-white surfaces, cool neutrals, and blue accents give headings, quotes, code, and callouts a quiet visual hierarchy.
 
-当前公开版本：**0.1.0**。
+The theme supports light and dark appearances in Live Preview and Reading view. It uses native Obsidian CSS variables and needs no additional plugins, downloaded fonts, or network services.
 
-## 预览
+Current public version: **0.1.0**. Requires **Obsidian 1.13.0 or later**.
 
-### 浅色
+## Preview
 
-![Lumen Docs 浅色外观](screenshots/light.png)
+### Light
 
-### 深色
+![Lumen Docs light appearance](screenshots/light.png)
 
-![Lumen Docs 深色外观](screenshots/dark.png)
+### Dark
 
-## 安装与使用
+![Lumen Docs dark appearance](screenshots/dark.png)
 
-需要 **Obsidian 1.13.0 或更高版本**。
+## Installation
 
-### 手动安装
+### Manual installation
 
-1. 从本仓库的 Release 下载 `theme.css` 和 `manifest.json`。如果尚未发布 Release，也可以直接下载仓库根目录的这两个文件。
-2. 在笔记库配置目录中创建 `.obsidian/themes/Lumen Docs/`，将两个文件放入其中。
-3. 打开 Obsidian「设置 → 外观 → 主题」，选择 **Lumen Docs**。如果没有出现在列表中，重新打开设置或重启 Obsidian。
-4. 按偏好选择浅色、深色或跟随系统外观。
+1. Download **`theme.css` and `manifest.json`** from the latest GitHub Release. The source archive is optional; the two files are sufficient to install the theme.
+2. Create `.obsidian/themes/Lumen Docs/` inside your vault and copy both files there. If your vault uses a custom configuration folder, use that folder instead of `.obsidian`.
+3. Open **Settings → Appearance → Themes** and select **Lumen Docs**. Reopen Settings or restart Obsidian if the theme does not appear immediately.
+4. Choose light, dark, or your preferred system appearance.
 
 ```text
-你的笔记库/
+Your vault/
 └─ .obsidian/
    └─ themes/
       └─ Lumen Docs/
@@ -36,126 +36,83 @@
          └─ theme.css
 ```
 
-如果更改了 Obsidian 的配置目录名称，请使用实际的配置目录。安装不需要 Node.js，也无需启用第三方插件。
+Installation does not require Node.js or community plugins. To update, replace both files. Switching to another theme restores its appearance without modifying your Markdown notes.
 
-升级时覆盖上述两个文件；切换为其他主题即可还原外观。主题不会改写 Markdown 笔记。
+## Design
 
-### 快速体验
+- **Content first:** headings use size, weight, and spacing rather than a rainbow of text colors or decorative rules.
+- **Comfortable layout:** the default readable width is 800px and line height is 1.7. Font family and text size follow your Obsidian settings.
+- **Purposeful accents:** blue identifies links, checked tasks, and interactive states; soft yellow marks highlighted text.
+- **Quiet structure:** neutral quote rules, subtle table grids, and restrained sidebar surfaces separate content without overpowering it.
+- **Readable code:** keywords, functions, strings, values, and comments have distinct roles on a neutral background.
+- **Native behavior:** task controls, links, callout folding, custom titles, and nested callouts retain their Obsidian behavior.
 
-在新笔记中粘贴下面的内容，切换实时预览与阅读视图查看：
+Completed tasks remain readable in gray. Selected text uses a clear foreground over a blue selection background.
 
-````markdown
-## 写清楚，也读得舒服
+## Callouts
 
-保留自然的 **加粗** 和 *斜体*，用 ==高亮== 标记重点。
+Callouts use a softly tinted background and semantic title/icon colors while keeping their body text neutral. Built-in aliases follow their native type color. Custom callout types can keep their own `--callout-color` and `--callout-icon` settings.
 
-- [ ] 整理想法
-- [x] 保存今天的记录
-
-> 引用使用中性色，与正文保持清晰的距离。
-
-> [!note|compact]
-> 图标与正文同行的紧凑提示。
-
-> [!warning]- 需要注意
-> 带标题和折叠操作的提示块。
-
-```javascript
-const message = "Keep writing";
-console.log(message);
-```
-
-| 内容 | 表现 |
-| --- | --- |
-| 表格 | 淡网格与舒适留白 |
-````
-
-## 主题设计
-
-### 以内容为中心
-
-- **标题**：使用字号、字重和间距表达层级，保持中性文字色，减少装饰横线。
-- **正文**：默认可读行宽为 800px、行高为 1.7；字体与字号由 Obsidian 外观设置决定。
-- **强调**：蓝色用于链接、任务勾选和交互状态，淡黄色用于文字高亮。
-- **引用**：细灰竖线、克制的次要文字色，保留用户明确写下的斜体。
-- **表格**：弱化网格线，用表头背景和单元格留白建立结构。
-- **代码**：中性底色搭配按角色区分的语法色；行内代码保持安静。
-- **界面**：侧栏、标签页和正文采用相近的中性色，减少阅读时的视觉干扰。
-
-任务完成后仍保留可读的灰色文字；选中文字时使用明确的前景色和蓝色选区背景。
-
-### 提示块
-
-保留 Obsidian 原生 Callout 的图标、自定义标题、折叠和嵌套行为。信息色集中在标题与图标，正文保持中性色，背景仅做轻微着色。
-
-紧凑提示使用原生元数据：
+For a compact note with its icon and content on the same row:
 
 ```markdown
 > [!note|compact]
-> 适合无需可见标题的简短提示。
+> A short note without a visible title.
 ```
 
-紧凑形式仅应用于不可折叠的 `note` 块，会收起可见标题。需要显示标题时使用普通 `[!note] 标题`；添加 `+` 或 `-` 折叠标记后会保留标题与折叠按钮。
+Compact styling applies only to non-collapsible `note` callouts and visually hides their title. Use `[!note] Your title` for a visible title. Adding the native `+` or `-` folding marker keeps the title and folding control visible.
 
-## 色彩方案
+## Color palette
 
-### 云白蓝基础色
+### Cloud white and blue
 
-| 用途 | 浅色 | 深色 |
+| Role | Light | Dark |
 | --- | --- | --- |
-| 正文背景 | `#FFFFFF` | `#1E2025` |
-| 侧栏背景 | `#F5F7FA` | `#181B20` |
-| 正文文字 | `#1F2329` | `#DFE4ED` |
-| 次要文字 | `#646A73` | `#A3ACBB` |
-| 链接与文字强调 | `#245BDB` | `#82AAFF` |
-| 主按钮填充 | `#2B63E5` | `#3768CC` |
-| 文字高亮背景 | `#FFF0B3` | `#493E22` |
+| Document background | `#FFFFFF` | `#1E2025` |
+| Sidebar background | `#F5F7FA` | `#181B20` |
+| Body text | `#1F2329` | `#DFE4ED` |
+| Secondary text | `#646A73` | `#A3ACBB` |
+| Links and text accents | `#245BDB` | `#82AAFF` |
+| Primary button fill | `#2B63E5` | `#3768CC` |
+| Text highlight background | `#FFF0B3` | `#493E22` |
 
-文字强调色与按钮填充色分别定义；深色模式使用更亮的链接色，同时保留适合白色文字的蓝色按钮。
+Text accents and button fills are defined separately. Dark appearance uses brighter links while retaining a blue button fill suited to white labels.
 
-### Callout 语义色
+### Semantic callout colors
 
-| 角色 | 常用类型 | 浅色 | 深色 |
+| Role | Common types | Light | Dark |
 | --- | --- | --- | --- |
-| 信息蓝 | `note`、`info`、`todo`、`summary` | `#245BA9` | `#9BBCF8` |
-| 提示青 | `tip`、`hint` | `#1B7465` | `#7ECCBB` |
-| 成功绿 | `success`、`check`、`done` | `#2D7549` | `#9CD2AC` |
-| 警告橙 | `warning`、`question` | `#94550C` | `#E9BB7B` |
-| 危险红 | `danger`、`error`、`failure`、`bug` | `#B13F45` | `#F19EA4` |
-| 示例紫 | `important`、`example` | `#7350AD` | `#C2A8F0` |
-| 引用灰 | `quote`、`cite` | `#5E646E` | `#AFBAC9` |
+| Information | `note`, `info`, `todo`, `summary` | `#245BA9` | `#9BBCF8` |
+| Tip | `tip`, `hint` | `#1B7465` | `#7ECCBB` |
+| Success | `success`, `check`, `done` | `#2D7549` | `#9CD2AC` |
+| Warning | `warning`, `question` | `#94550C` | `#E9BB7B` |
+| Danger | `danger`, `error`, `failure`, `bug` | `#B13F45` | `#F19EA4` |
+| Example | `important`, `example` | `#7350AD` | `#C2A8F0` |
+| Quote | `quote`, `cite` | `#5E646E` | `#AFBAC9` |
 
-同类的原生别名遵循相同颜色。自定义 Callout 可以继续通过 `--callout-color` 和 `--callout-icon` 定义自己的颜色与图标。
+### Syntax colors
 
-### 代码语法色
-
-| 语法角色 | 浅色 | 深色 |
+| Syntax role | Light | Dark |
 | --- | --- | --- |
-| 关键字 | `#6742B8` | `#C2A4F4` |
-| 函数 | `#245BDB` | `#A8C5FF` |
-| 字符串 | `#236D4B` | `#9FD6B0` |
-| 数值与重要标记 | `#9A4B15` | `#EFBA86` |
-| 注释 | `#68717E` | `#9AA6B8` |
-| 运算符与标点 | `#536075` | `#B3BFD1` |
+| Keywords | `#6742B8` | `#C2A4F4` |
+| Functions | `#245BDB` | `#A8C5FF` |
+| Strings | `#236D4B` | `#9FD6B0` |
+| Values and important tokens | `#9A4B15` | `#EFBA86` |
+| Comments | `#68717E` | `#9AA6B8` |
+| Operators and punctuation | `#536075` | `#B3BFD1` |
 
-语法色使用 Obsidian 的 `--code-*` 变量。编辑视图与阅读视图使用不同的高亮引擎，同一语言的分词与着色细节可能略有差异。
+Syntax colors use the native `--code-*` variables. Live Preview and Reading view use different syntax engines, so tokenization and some coloring details may differ by language and view.
 
-## 个性化设置
+## Customization
 
-### 字体、字号与行宽
+Set your font and text size in **Settings → Appearance**. Enable the editor's **Readable line length** option to use the theme's document width.
 
-字体和字号在 Obsidian「设置 → 外观」中调整。需要主题设定的正文宽度时，请启用编辑器的可读行宽（Readable line length）选项。
+The optional **Style Settings** plugin provides these controls under **Lumen Docs · 清简文档**:
 
-可选安装 **Style Settings**，在「Lumen Docs · 清简文档」中调整：
+- Document width: 560–1200px, default 800px.
+- Line height: 1.4–2.2, default 1.7.
 
-- 正文宽度：560–1200px，默认 800px。
-- 正文行高：1.4–2.2，默认 1.7。
-
-不安装该插件也可以正常使用默认样式。
-
-### CSS 代码片段
-
-在笔记库 `.obsidian/snippets/lumen-custom.css` 中添加以下内容，再到「设置 → 外观 → CSS 代码片段」启用：
+Without that plugin, the default appearance works normally. You can also create `.obsidian/snippets/lumen-custom.css` and enable it in **Settings → Appearance → CSS snippets**:
 
 ```css
 body {
@@ -164,16 +121,16 @@ body {
 }
 ```
 
-优先用代码片段覆盖变量，便于保留个人设置和升级主题。
+Prefer snippets over editing the installed theme directly, so theme updates can preserve your customizations.
 
-## 使用说明
+## Notes and support
 
-- 主题为桌面文档阅读设计，小屏界面和第三方插件可能有不同的布局表现。
-- 主题只负责外观，不提供文档同步、协同编辑、浮动编辑工具栏等功能。
-- 其他 CSS 片段或插件样式可能覆盖主题设置；遇到冲突时可暂时停用相关样式以定位原因。
-- 内置字体来自系统与 Obsidian 的字体设置；主题不加载外部字体、图片或脚本。
-- 反馈问题时，请附上 Obsidian 版本、浅深模式、相关插件或片段信息，以及去除私人内容后的截图。
+- The layout is designed for desktop document reading. Small screens and third-party plugins may produce different layouts.
+- This is an appearance theme. It does not provide document synchronization, collaboration, or floating editing tools.
+- Other CSS snippets and plugin styles can override theme settings. Temporarily disable conflicting styles when investigating an issue.
+- Fonts come from your system and Obsidian settings. The theme does not load remote fonts, images, or scripts.
+- When reporting an issue, include your Obsidian version, appearance mode, relevant plugins/snippets, and a screenshot with private information removed.
 
-## 许可与贡献
+## License and contributions
 
-采用 [MIT License](LICENSE)。欢迎提出问题和改进建议；源码结构与发布方式见 [贡献说明](CONTRIBUTING.md)。
+Released under the [MIT License](LICENSE). See the [contribution and release guide](CONTRIBUTING.md) for the source layout and publishing instructions.

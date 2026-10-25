@@ -30,8 +30,10 @@ node build.cjs
 1. 更新 `manifest.json` 的版本，按需要调整 `minAppVersion`，同步 `versions.json`、CSS 文件头和更新记录。
 2. 运行本地构建，提交源码。
 3. 为该提交创建与清单一致的标签，如 `0.1.0`；标签不添加 `v` 前缀。
-4. 推送到公开 GitHub 仓库后，将标签推送至远端。仓库中的 Release 工作流会创建草稿，并附上 `theme.css` 和 `manifest.json`。
+4. 推送到公开 GitHub 仓库后，将标签推送至远端。仓库中的 Release 工作流会创建草稿，并附上 `theme.css` 和 `manifest.json`，随后下载附件核对内容。
 5. 核对草稿内容后发布 Release。只有源码 ZIP 不能替代上述两个独立附件。
+
+如果已有 Release 缺少附件，可在 GitHub Actions 的 **Draft theme release → Run workflow** 中填写现有标签（如 `0.1.0`），补传该标签下的安装文件。工作流也会在 Release 发布后核对附件；已存在的 Release 不会被另建为新草稿。README 的英文主页与中文版本应同步更新。
 
 首次申请社区目录收录时，在 [Obsidian Community](https://community.obsidian.md) 连接 GitHub 账户，添加主题，填写公开仓库地址、截图路径 `screenshots/screenshot.png`，选择 Light 与 Dark，并按目录提示完成审核。
 
