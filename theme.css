@@ -1,6 +1,6 @@
 /*
  * Lumen Docs 0.1.1
- * Cloud white, cool neutrals, and blue accents for Obsidian.
+ * Cloud white, ink-blue headings, and clear semantic color for Obsidian.
  * Copyright (c) 2026 Zheng and Lumen Docs contributors. MIT License.
  */
 
@@ -9,7 +9,7 @@ name: Lumen Docs · 清简文档
 id: lumen-docs
 settings:
   - id: lumen-page-width
-    title: 正文宽度
+    title: 正文宽度 · Document width
     type: variable-number-slider
     default: 800
     min: 560
@@ -17,12 +17,43 @@ settings:
     step: 40
     format: px
   - id: lumen-line-height
-    title: 正文行高
+    title: 正文行高 · Line height
     type: variable-number-slider
     default: 1.7
     min: 1.4
     max: 2.2
     step: 0.1
+  - id: lumen-paragraph-spacing
+    title: 段落间距 · Paragraph spacing
+    description: 正文字号的倍数，编辑与阅读视图共用。A multiple of the text size in both views.
+    type: variable-number-slider
+    default: 0.8
+    min: 0.5
+    max: 1.2
+    step: 0.1
+  - id: lumen-heading-scale
+    title: 标题比例 · Heading scale
+    description: 同时调整六级标题。Scale all six heading levels together.
+    type: variable-number-slider
+    default: 1
+    min: 0.9
+    max: 1.2
+    step: 0.05
+  - id: lumen-callout-style
+    title: 标注块外观 · Callout style
+    type: class-select
+    allowEmpty: false
+    default: lumen-callout-soft
+    options:
+      - label: 语义底色 · Color fill
+        value: lumen-callout-soft
+      - label: 简洁线框 · Outline
+        value: lumen-callout-outline
+  - id: lumen-striped-tables
+    title: 表格斑马纹 · Alternating table rows
+    description: 也可用同名 cssclasses 仅应用于单篇笔记。Also available as a per-note cssclasses option.
+    type: class-toggle
+    default: false
 */
 
 /* Layout and typography. Colors follow the active appearance below. */
@@ -31,12 +62,12 @@ body {
   --file-line-width: var(--lumen-page-width, 800px);
   --line-height-normal: var(--lumen-line-height, 1.7);
   --line-height-tight: 1.4;
-  --h1-size: 2em;
-  --h2-size: 1.5em;
-  --h3-size: 1.25em;
-  --h4-size: 1.1em;
-  --h5-size: 1em;
-  --h6-size: .9375em;
+  --h1-size: calc(1.875em * var(--lumen-heading-scale, 1));
+  --h2-size: calc(1.5em * var(--lumen-heading-scale, 1));
+  --h3-size: calc(1.25em * var(--lumen-heading-scale, 1));
+  --h4-size: calc(1.125em * var(--lumen-heading-scale, 1));
+  --h5-size: calc(1em * var(--lumen-heading-scale, 1));
+  --h6-size: calc(.9375em * var(--lumen-heading-scale, 1));
   --h1-weight: 650;
   --h2-weight: 600;
   --h3-weight: 600;
@@ -46,15 +77,26 @@ body {
   --h1-line-height: 1.35;
   --h2-line-height: 1.4;
   --h3-line-height: 1.4;
-  --h1-color: var(--text-normal);
-  --h2-color: var(--text-normal);
-  --h3-color: var(--text-normal);
+  --h4-line-height: 1.45;
+  --h5-line-height: 1.5;
+  --h6-line-height: 1.5;
+  --h1-letter-spacing: -.02em;
+  --h2-letter-spacing: -.015em;
+  --h3-letter-spacing: -.01em;
+  --h4-letter-spacing: 0;
+  --h5-letter-spacing: 0;
+  --h6-letter-spacing: 0;
+  --h1-color: var(--lumen-heading-primary);
+  --h2-color: var(--text-accent);
+  --h3-color: var(--lumen-heading-secondary);
   --h4-color: var(--text-normal);
   --h5-color: var(--text-normal);
   --h6-color: var(--text-muted);
   --bold-color: inherit;
   --italic-color: inherit;
-  --p-spacing: 12px;
+  --p-spacing: calc(var(--font-text-size) * var(--lumen-paragraph-spacing, .8));
+  --heading-spacing: calc(var(--p-spacing) * 2.2);
+  --file-margins: clamp(20px, 3vw, 40px);
   --list-spacing: .25em;
   --radius-s: 4px;
   --radius-m: 8px;
@@ -63,23 +105,67 @@ body {
   --link-decoration: underline;
   --link-external-decoration: underline;
   --link-decoration-thickness: 1px;
+  --link-unresolved-color: var(--text-muted);
+  --link-unresolved-opacity: 1;
+  --link-unresolved-decoration-style: dotted;
+  --link-unresolved-decoration-color: var(--text-muted);
+  --tag-color: var(--text-accent);
+  --tag-color-hover: var(--text-accent-hover);
+  --tag-background: color-mix(in srgb, var(--text-accent) var(--lumen-tag-tint), transparent);
+  --tag-background-hover: color-mix(in srgb, var(--text-accent) 22%, transparent);
+  --tag-border-color: color-mix(in srgb, var(--text-accent) 35%, transparent);
+  --tag-border-width: 1px;
+  --tag-padding-x: .45em;
+  --tag-padding-y: .1em;
+  --tag-radius: 5px;
+  --tag-size: .875em;
   --callout-padding: 12px 16px;
   --callout-title-padding: 0;
   --callout-content-padding: 0;
   --callout-radius: 8px;
-  --callout-title-size: 14px;
-  --callout-title-weight: 600;
+  --callout-title-size: 15px;
+  --callout-title-weight: 650;
   --callout-border-width: 1px;
   --callout-border-opacity: .2;
   --blockquote-font-style: normal;
-  --blockquote-color: var(--text-muted);
-  --blockquote-border-thickness: 2px;
+  --blockquote-color: var(--text-normal);
+  --blockquote-border-thickness: 3px;
   --blockquote-border-color: var(--lumen-quote-border);
-  --table-cell-padding: 8px 12px;
-  --table-header-background: var(--background-secondary);
+  --blockquote-background-color: var(--lumen-quote-background);
+  --lumen-table-cell-padding: 8px 12px;
+  --table-text-size: calc(var(--font-text-size) * .9375);
+  --table-line-height: 1.6;
+  --table-border-color: var(--background-modifier-border);
+  --table-header-background: var(--lumen-table-header);
+  --table-header-background-hover: var(--lumen-table-header);
+  --table-header-color: var(--lumen-heading-primary);
   --table-header-weight: 600;
-  --code-radius: 6px;
+  --table-row-background-hover: color-mix(in srgb, var(--text-accent) 9%, transparent);
+  --table-row-alt-background-hover: var(--table-row-background-hover);
+  --image-radius: 8px;
+  --hr-thickness: 1px;
+  --code-radius: 8px;
+  --code-border-width: 1px;
+  --code-border-color: var(--background-modifier-border);
   --code-size: .875em;
+  --embed-border-start: 1px solid var(--background-modifier-border);
+  --embed-border-end: 1px solid var(--background-modifier-border);
+  --embed-border-top: 1px solid var(--background-modifier-border);
+  --embed-border-bottom: 1px solid var(--background-modifier-border);
+  --embed-background: var(--background-primary-alt);
+  --embed-padding: 12px 16px;
+  --footnote-size: .875em;
+  --input-shadow: none;
+  --input-shadow-hover: none;
+  --nav-item-color: var(--text-muted);
+  --nav-item-color-hover: var(--text-normal);
+  --nav-item-weight-active: 500;
+  --nav-indentation-guide-color: var(--background-modifier-border);
+  --lumen-navigation-edge: 2px;
+  --tab-text-color: var(--text-muted);
+  --tab-text-color-focused-active: var(--text-normal);
+  --tab-text-color-focused-active-current: var(--text-normal);
+  --search-result-background: var(--background-primary-alt);
   --checkbox-radius: 4px;
   --checkbox-color: var(--interactive-accent);
   --checkbox-color-hover: var(--interactive-accent-hover);
@@ -107,38 +193,59 @@ body {
 /* Cloud white and blue. Syntax and semantic colors have separate roles. */
 
 .theme-light {
+  --color-base-00: #fff;
+  --color-base-05: #f5f8ff;
+  --color-base-10: #eef4ff;
+  --color-base-20: #e4edfb;
+  --color-base-25: #dce7f8;
+  --color-base-30: #cddbf1;
+  --color-base-35: #9db8e0;
+  --color-base-40: #93abc9;
+  --color-base-50: #7a8dab;
+  --color-base-60: #60708b;
+  --color-base-70: #596b85;
+  --color-base-100: #1f2329;
   --background-primary: #fff;
-  --background-primary-alt: #fafbfc;
-  --background-secondary: #f5f7fa;
-  --background-secondary-alt: #eef1f5;
-  --background-modifier-border: #e2e6ed;
-  --background-modifier-border-hover: #c8ced8;
-  --background-modifier-border-focus: #5b84e8;
-  --background-modifier-hover: rgb(31 35 41 / 4.5%);
+  --background-primary-alt: #f5f8ff;
+  --background-secondary: #eef4ff;
+  --background-secondary-alt: #e4edfb;
+  --background-modifier-border: #cddbf1;
+  --background-modifier-border-hover: #9db8e0;
+  --background-modifier-border-focus: #2f6feb;
+  --background-modifier-hover: rgb(37 99 235 / 8%);
+  --background-modifier-form-field: var(--background-primary);
+  --background-modifier-form-field-hover: var(--background-primary-alt);
   --text-normal: #1f2329;
-  --text-muted: #646a73;
-  --text-faint: #626c79;
-  --text-accent: #245bdb;
-  --text-accent-hover: #1b49b7;
-  --text-selection: rgb(51 112 255 / 18%);
+  --text-muted: #596b85;
+  --text-faint: #60708b;
+  --text-accent: #1f5ed6;
+  --text-accent-hover: #1749ab;
+  --text-selection: rgb(37 99 235 / 24%);
   --interactive-normal: #fff;
-  --interactive-hover: #f0f3f8;
-  --interactive-accent: #2b63e5;
-  --interactive-accent-hover: #245bdb;
+  --interactive-hover: #e8efff;
+  --interactive-accent: #2563eb;
+  --interactive-accent-hover: #1d4ed8;
   --text-on-accent: #fff;
-  --accent-h: 222;
-  --accent-s: 78%;
+  --accent-h: 221;
+  --accent-s: 83%;
   --accent-l: 53%;
-  --color-accent: #2b63e5;
-  --lumen-quote-border: #c8cdd5;
-  --lumen-highlight: #fff0b3;
-  --code-background: #f5f7fa;
-  --nav-item-background-active: rgb(51 112 255 / 8%);
-  --nav-item-color-active: #245bdb;
+  --color-accent: #2563eb;
+  --lumen-heading-primary: #173b70;
+  --lumen-heading-secondary: #315c8f;
+  --lumen-table-header: #e4edff;
+  --lumen-tag-tint: 12%;
+  --lumen-quote-border: #3976e5;
+  --lumen-quote-background: #edf3ff;
+  --lumen-highlight: #ffe38c;
+  --lumen-callout-tint: 11%;
+  --lumen-callout-border: 40%;
+  --code-background: #eff4fc;
+  --nav-item-background-active: #dce8ff;
+  --nav-item-color-active: #1749ab;
   --code-normal: #1f2329;
-  --code-comment: #68717e;
+  --code-comment: #5b6c84;
   --code-keyword: #6742b8;
-  --code-function: #245bdb;
+  --code-function: #1f5ed6;
   --code-string: #236d4b;
   --code-value: #9a4b15;
   --code-important: #9a4b15;
@@ -146,47 +253,68 @@ body {
   --code-property: #7b477c;
   --code-punctuation: #536075;
   --code-tag: #9d3f57;
-  --lumen-info: #245ba9;
-  --lumen-tip: #1b7465;
-  --lumen-success: #2d7549;
-  --lumen-warning: #94550c;
-  --lumen-danger: #b13f45;
-  --lumen-example: #7350ad;
-  --lumen-neutral: #5e646e;
+  --lumen-info: #1f5ed6;
+  --lumen-tip: #086d75;
+  --lumen-success: #1f774d;
+  --lumen-warning: #965000;
+  --lumen-danger: #b53147;
+  --lumen-example: #6d46bc;
+  --lumen-neutral: #4e607a;
 }
 
 /* Dark surfaces use lighter foregrounds while keeping blue button fills. */
 
 .theme-dark {
-  --background-primary: #1e2025;
-  --background-primary-alt: #22252b;
-  --background-secondary: #181b20;
-  --background-secondary-alt: #20232a;
-  --background-modifier-border: #363c46;
-  --background-modifier-border-hover: #4a5361;
-  --background-modifier-border-focus: #82aaff;
-  --background-modifier-hover: rgb(222 228 238 / 5.5%);
-  --text-normal: #dfe4ed;
-  --text-muted: #a3acbb;
-  --text-faint: #8d98aa;
-  --text-accent: #82aaff;
-  --text-accent-hover: #a5c1ff;
-  --text-selection: rgb(99 145 255 / 25%);
-  --interactive-normal: #292e37;
-  --interactive-hover: #333b48;
-  --interactive-accent: #3768cc;
-  --interactive-accent-hover: #2e5cb8;
+  --color-base-00: #111a2b;
+  --color-base-05: #142036;
+  --color-base-10: #172033;
+  --color-base-20: #1e2b42;
+  --color-base-25: #263650;
+  --color-base-30: #344968;
+  --color-base-35: #4b6284;
+  --color-base-40: #617895;
+  --color-base-50: #7b8eaa;
+  --color-base-60: #92a4bd;
+  --color-base-70: #aebbd0;
+  --color-base-100: #e2eaf6;
+  --background-primary: #172033;
+  --background-primary-alt: #1e2b42;
+  --background-secondary: #111a2b;
+  --background-secondary-alt: #1b2a42;
+  --background-modifier-border: #344968;
+  --background-modifier-border-hover: #4b6284;
+  --background-modifier-border-focus: #91b9ff;
+  --background-modifier-hover: rgb(145 185 255 / 10%);
+  --background-modifier-form-field: var(--background-primary);
+  --background-modifier-form-field-hover: var(--background-primary-alt);
+  --text-normal: #e2eaf6;
+  --text-muted: #aebbd0;
+  --text-faint: #92a4bd;
+  --text-accent: #91b9ff;
+  --text-accent-hover: #bbd4ff;
+  --text-selection: rgb(77 136 255 / 32%);
+  --interactive-normal: #253650;
+  --interactive-hover: #2d4566;
+  --interactive-accent: #3b6ed6;
+  --interactive-accent-hover: #315fbf;
   --text-on-accent: #fff;
   --accent-h: 220;
-  --accent-s: 60%;
+  --accent-s: 65%;
   --accent-l: 51%;
-  --color-accent: #82aaff;
-  --lumen-quote-border: #555e6b;
-  --lumen-highlight: #493e22;
-  --code-background: #262b33;
-  --nav-item-background-active: rgb(130 170 255 / 12%);
-  --nav-item-color-active: #a5c1ff;
-  --code-normal: #dfe4ed;
+  --color-accent: #91b9ff;
+  --lumen-heading-primary: #d1e2ff;
+  --lumen-heading-secondary: #b7cff2;
+  --lumen-table-header: #223d61;
+  --lumen-tag-tint: 18%;
+  --lumen-quote-border: #6b9fff;
+  --lumen-quote-background: #1b2f4c;
+  --lumen-highlight: #5a4519;
+  --lumen-callout-tint: 15%;
+  --lumen-callout-border: 48%;
+  --code-background: #1e2b42;
+  --nav-item-background-active: #253f66;
+  --nav-item-color-active: #bbd4ff;
+  --code-normal: #e2eaf6;
   --code-comment: #9aa6b8;
   --code-keyword: #c2a4f4;
   --code-function: #a8c5ff;
@@ -197,13 +325,13 @@ body {
   --code-property: #d4b0da;
   --code-punctuation: #b3bfd1;
   --code-tag: #e8a4b5;
-  --lumen-info: #9bbcf8;
-  --lumen-tip: #7eccbb;
-  --lumen-success: #9cd2ac;
-  --lumen-warning: #e9bb7b;
-  --lumen-danger: #f19ea4;
-  --lumen-example: #c2a8f0;
-  --lumen-neutral: #afbac9;
+  --lumen-info: #91b9ff;
+  --lumen-tip: #6ccecc;
+  --lumen-success: #82d8a4;
+  --lumen-warning: #f4c16f;
+  --lumen-danger: #ff9bae;
+  --lumen-example: #c7abff;
+  --lumen-neutral: #b3c4df;
 }
 
 /* Quiet application chrome; native dimensions, accessibility and controls stay intact. */
@@ -213,7 +341,7 @@ body {
 }
 
 .nav-file-title, .nav-folder-title {
-  font-size: 13px;
+  font-size: var(--font-ui-small);
   border-radius: 5px;
 }
 
@@ -223,12 +351,53 @@ body {
   font-weight: 500;
 }
 
+.nav-file-title.is-active,
+.workspace-leaf-content[data-type="outline"] .tree-item-self.is-active {
+  box-shadow: inset var(--lumen-navigation-edge) 0 0 var(--text-accent);
+}
+
+body.mod-rtl, body[dir="rtl"] {
+  --lumen-navigation-edge: -2px;
+}
+
 .workspace-tab-header.is-active {
   box-shadow: none;
 }
 
+.workspace .mod-root .workspace-tab-header.is-active .workspace-tab-header-inner {
+  box-shadow: inset 0 -2px 0 var(--text-accent);
+}
+
 .workspace-tab-header-inner-title {
-  font-size: 13px;
+  font-size: var(--font-ui-small);
+}
+
+.workspace-leaf-content[data-type="outline"] .tree-item-inner {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.tree-item-self:focus-visible {
+  outline: 2px solid var(--background-modifier-border-focus);
+  outline-offset: -2px;
+}
+
+.search-result-file-title {
+  font-weight: 500;
+}
+
+.search-result-file-matches {
+  line-height: 1.55;
+}
+
+.search-result-file-match {
+  overflow-wrap: anywhere;
+}
+
+.search-result-file-matched-text {
+  background-color: var(--lumen-highlight);
+  color: var(--text-normal);
+  border-radius: 2px;
 }
 
 /* Native editor and renderer selectors: the theme works with every plugin disabled. */
@@ -238,7 +407,8 @@ body {
 }
 
 .markdown-source-view .inline-title, .markdown-preview-view .inline-title {
-  font-size: 32px;
+  color: var(--lumen-heading-primary);
+  font-size: 2em;
   font-weight: 650;
   line-height: 1.35;
   margin-bottom: 20px;
@@ -247,7 +417,7 @@ body {
 .markdown-source-view .metadata-container, .markdown-preview-view .metadata-container {
   margin-bottom: 24px;
   padding-block: 0;
-  font-size: 13px;
+  font-size: var(--font-smaller);
 
   --metadata-property-padding: 4px 0;
 }
@@ -261,56 +431,31 @@ body {
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-header {
-  padding-top: 12px;
-  padding-bottom: 8px;
-  line-height: 1.4;
+  padding-top: var(--p-spacing);
+  padding-bottom: .25em;
 }
 
 /* stylelint-enable selector-class-pattern */
 
-.markdown-source-view.mod-cm6 .cm-header-1 {
-  font-size: 2em;
-  font-weight: 650;
-  letter-spacing: -.025em;
-}
-
-.markdown-source-view.mod-cm6 .cm-header-2 {
-  font-size: 1.5em;
-  font-weight: 600;
-  letter-spacing: -.015em;
-}
-
-.markdown-source-view.mod-cm6 .cm-header-3 {
-  font-size: 1.25em;
-  font-weight: 600;
-}
-
-.markdown-rendered h1 {
-  font-size: 2em;
-  font-weight: 650;
-  letter-spacing: -.025em;
-  margin: 32px 0 12px;
-}
-
-.markdown-rendered h2 {
-  font-size: 1.5em;
-  font-weight: 600;
-  margin: 28px 0 10px;
-}
-
-.markdown-rendered h3 {
-  font-size: 1.25em;
-  font-weight: 600;
-  margin: 24px 0 8px;
+.markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
+  margin-block: var(--heading-spacing) calc(var(--p-spacing) * .75);
 }
 
 .markdown-rendered p, .markdown-rendered :is(ul,ol) {
-  margin-block: 12px;
+  margin-block: var(--p-spacing);
+}
+
+.markdown-rendered :is(ul,ol) :is(ul,ol) {
+  margin-block: .25em;
+}
+
+.markdown-rendered > :is(h1,h2,h3):first-child {
+  margin-block-start: 0;
 }
 
 .markdown-rendered blockquote {
   margin: 1em 0;
-  padding: 2px 0 2px 16px;
+  padding: 8px 14px;
 }
 
 /* stylelint-disable selector-class-pattern -- Obsidian's native classes are case-sensitive. */
@@ -318,9 +463,9 @@ body {
 .markdown-source-view.mod-cm6 .HyperMD-quote,
 .markdown-rendered blockquote:not(.callout) {
   border: 0;
-  border-inline-start: 2px solid var(--lumen-quote-border);
-  background: transparent;
-  color: var(--text-muted);
+  border-inline-start: var(--blockquote-border-thickness) solid var(--lumen-quote-border);
+  background: var(--blockquote-background-color);
+  color: var(--blockquote-color);
   font-style: normal;
   box-shadow: none;
 }
@@ -342,16 +487,18 @@ body {
 /* Native type variables also cover aliases; custom types retain their palette. */
 
 .callout {
-  margin: 12px 0;
-  border-inline-start-width: 3px;
-  border-color: color-mix(in srgb, var(--callout-color) 25%, transparent);
-  background-color: color-mix(in srgb, var(--callout-color) 5.5%, transparent);
+  margin: var(--p-spacing) 0;
+  border-inline-start-width: 4px;
+  border-color: color-mix(in srgb, var(--callout-color) var(--lumen-callout-border), transparent);
+  border-inline-start-color: var(--callout-color);
+  background-color: color-mix(in srgb, var(--callout-color) var(--lumen-callout-tint), var(--background-primary));
   box-shadow: none;
   mix-blend-mode: normal;
 }
 
-.callout[data-callout="note"] {
-  border-inline-start-width: 1px;
+body.lumen-callout-outline {
+  --lumen-callout-tint: 0%;
+  --lumen-callout-border: 55%;
 }
 
 .callout-title {
@@ -366,8 +513,8 @@ body {
 }
 
 .callout-icon .svg-icon {
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 18px;
 }
 
 .callout-content {
@@ -389,6 +536,10 @@ body {
 
 .callout-content .callout {
   margin-block: 10px 0;
+}
+
+body.lumen-callout-outline .callout {
+  background-color: transparent;
 }
 
 /* Optional native metadata, e.g. > [!note|compact]. Explicit opt-in avoids
@@ -434,18 +585,57 @@ body {
 
 .markdown-rendered table {
   border-collapse: collapse;
-  font-size: .9375em;
+  font-size: var(--table-text-size);
 }
 
 .markdown-rendered :is(td,th) {
-  border: 1px solid color-mix(in srgb, var(--background-modifier-border) 65%, transparent);
-  padding: 8px 12px;
+  border-color: var(--table-border-color);
+  padding: var(--lumen-table-cell-padding);
+  overflow-wrap: break-word;
 }
 
-.markdown-rendered th {
-  background: var(--background-secondary);
-  color: var(--text-normal);
-  font-weight: 600;
+.markdown-source-view.mod-cm6 .cm-table-widget .table-cell-wrapper {
+  padding: var(--lumen-table-cell-padding);
+}
+
+.markdown-rendered th, .cm-table-widget th {
+  background: var(--table-header-background);
+  color: var(--table-header-color);
+  font-weight: var(--table-header-weight);
+}
+
+/* The live editor owns its table scroller, drag handles and cell selection. */
+
+.markdown-preview-view .el-table {
+  overflow-x: auto;
+}
+
+/* Rendered embeds and callouts may contain a table without a section wrapper. */
+
+.markdown-preview-view > table,
+.markdown-preview-view .callout-content > table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.lumen-striped-tables {
+  --table-row-alt-background: var(--background-primary-alt);
+}
+
+/* Per-note helpers use Obsidian's cssclasses in both native views. */
+
+.lumen-wide {
+  --file-line-width: 1100px;
+}
+
+.lumen-compact {
+  --lumen-line-height: 1.55;
+  --line-height-normal: 1.55;
+  --p-spacing: calc(var(--font-text-size) * .55);
+  --heading-spacing: calc(var(--p-spacing) * 2.2);
+  --list-spacing: .15em;
+  --lumen-table-cell-padding: 6px 10px;
 }
 
 .markdown-rendered :is(pre,code) {
@@ -456,8 +646,106 @@ body {
   background: transparent;
 }
 
+.markdown-rendered pre {
+  padding: 16px 18px;
+  line-height: 1.6;
+}
+
 .markdown-rendered code:not(pre code) {
   padding: .12em .32em;
+}
+
+/* Native embeds, tags and footnotes share the document's quiet structure. */
+
+.markdown-rendered :is(.image-embed img,p > img:only-child,figure > img),
+.markdown-source-view.mod-cm6 .image-embed img {
+  border-radius: var(--image-radius);
+  box-shadow: 0 0 0 1px var(--background-modifier-border);
+  vertical-align: middle;
+}
+
+.markdown-rendered figure {
+  margin: var(--p-spacing) 0;
+}
+
+.markdown-rendered :is(figcaption,.lumen-caption) {
+  margin: .5em 0 1.2em;
+  color: var(--text-muted);
+  font-size: .875em;
+  line-height: 1.5;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* An explicit opt-in helps transparent diagrams that need a paper surface.
+   Image pixels, authored dimensions and transparent artwork otherwise stay intact. */
+
+.lumen-image-paper :is(.image-embed img,p > img:only-child,figure > img) {
+  background-color: #fff;
+}
+
+.markdown-embed {
+  --h1-size: calc(1.5em * var(--lumen-heading-scale, 1));
+  --h2-size: calc(1.25em * var(--lumen-heading-scale, 1));
+  --h3-size: calc(1.125em * var(--lumen-heading-scale, 1));
+  --heading-spacing: calc(var(--p-spacing) * 1.5);
+
+  border-radius: var(--radius-m);
+}
+
+.markdown-embed.inline-embed > .markdown-embed-title {
+  padding-bottom: 0;
+  color: var(--text-muted);
+  font-size: var(--font-ui-small);
+  font-weight: 500;
+}
+
+.markdown-embed.inline-embed > .markdown-embed-content > .markdown-preview-view {
+  --file-line-width: 100%;
+}
+
+.markdown-embed.inline-embed:is([data-type="block"],[src*="#^"]) {
+  --embed-background: transparent;
+  --embed-border-start: 2px solid var(--lumen-quote-border);
+  --embed-border-end: none;
+  --embed-border-top: none;
+  --embed-border-bottom: none;
+  --embed-padding: 4px 16px;
+
+  border-radius: 0;
+}
+
+.markdown-embed .markdown-embed {
+  --embed-background: transparent;
+}
+
+.markdown-rendered .footnotes {
+  margin-block-start: calc(var(--p-spacing) * 2);
+  padding-block-start: var(--p-spacing);
+  border-block-start: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+}
+
+.markdown-rendered a, .markdown-source-view.mod-cm6 .cm-hmd-internal-link {
+  text-underline-offset: .18em;
+}
+
+.markdown-rendered a {
+  overflow-wrap: anywhere;
+}
+
+.markdown-rendered a.tag {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.markdown-rendered hr {
+  margin-block: calc(var(--p-spacing) * 2);
+}
+
+body :is(button,.clickable-icon,a):focus-visible {
+  outline: 2px solid var(--background-modifier-border-focus);
+  outline-offset: 2px;
 }
 
 /* Selected text uses one readable foreground, including links and syntax colors. */
@@ -475,7 +763,23 @@ body :is(.markdown-rendered,.markdown-source-view) input.task-list-item-checkbox
 }
 
 @media (width <= 600px) {
+  body {
+    --file-margins: 16px;
+    --callout-padding: 10px 12px;
+    --embed-padding: 10px 12px;
+    --lumen-table-cell-padding: 6px 8px;
+  }
+
   .markdown-source-view .inline-title, .markdown-preview-view .inline-title {
-    font-size: 28px;
+    font-size: 1.75em;
+    overflow-wrap: anywhere;
+  }
+
+  .markdown-rendered :is(h1,h2,h3,h4,h5,h6) {
+    overflow-wrap: anywhere;
+  }
+
+  .lumen-compact {
+    --lumen-table-cell-padding: 5px 8px;
   }
 }
