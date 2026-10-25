@@ -1,0 +1,38 @@
+name: Draft theme release
+
+on:
+  push:
+    tags:
+      - '*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Verify release version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          manifest = json.loads(Path('manifest.json').read_text())
+          versions = json.loads(Path('versions.json').read_text())
+          assert os.environ['RELEASE_TAG'] == manifest['version'], 'Tag must match manifest version'
+          assert versions[manifest['version']] == manifest['minAppVersion'], 'Update versions.json'
+          PY
+      - name: Create draft with theme assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            --verify-tag \
+            --draft \
+            --title "Lumen Docs $RELEASE_TAG" \
+            --notes-file CHANGELOG.md \
+            manifest.json theme.css

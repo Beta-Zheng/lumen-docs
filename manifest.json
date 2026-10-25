@@ -1,6 +1,7 @@
 {
   "name": "Lumen Docs",
-  "version": "1.0.0",
-  "minAppVersion": "1.5.0",
-  "author": "Local"
+  "version": "0.1.0",
+  "minAppVersion": "1.13.0",
+  "author": "Zheng",
+  "authorUrl": "https://github.com/Beta-Zheng"
 }

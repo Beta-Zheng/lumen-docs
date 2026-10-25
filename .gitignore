@@ -1,2 +1,8 @@
 release/
 *.zip
+node_modules/
+.npm-cache/
+tests/
+QA.md
+*verification*.json
+*original*.md
