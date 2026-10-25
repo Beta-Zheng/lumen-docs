@@ -20,7 +20,7 @@
 node build.cjs
 ```
 
-输出目录为 `release/0.1.0/`（随清单版本变化）：
+输出目录为 `release/0.1.1/`（随清单版本变化）：
 
 - `theme.css`、`manifest.json`：可直接上传 GitHub Release 的两个文件。
 - `Lumen Docs/`：包含安装文件、说明和许可的手动安装文件夹。
@@ -34,6 +34,8 @@ node build.cjs
 5. 核对草稿内容后发布 Release。只有源码 ZIP 不能替代上述两个独立附件。
 
 如果已有 Release 缺少附件，可在 GitHub Actions 的 **Draft theme release → Run workflow** 中填写现有标签（如 `0.1.0`），补传该标签下的安装文件。工作流也会在 Release 发布后核对附件；已存在的 Release 不会被另建为新草稿。README 的英文主页与中文版本应同步更新。
+
+如果社区目录已经扫描过该版本，补传附件或更新默认分支不会替换原有的正式审核记录。可先用 **Review branch** 预检修改；需要正式复审时，递增清单版本并发布新 Release，再由目录检查新版本。
 
 首次申请社区目录收录时，在 [Obsidian Community](https://community.obsidian.md) 连接 GitHub 账户，添加主题，填写公开仓库地址、截图路径 `screenshots/screenshot.png`，选择 Light 与 Dark，并按目录提示完成审核。
 

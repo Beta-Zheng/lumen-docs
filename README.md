@@ -6,7 +6,7 @@ Lumen Docs is a lightweight Obsidian theme for clear, comfortable document readi
 
 The theme supports light and dark appearances in Live Preview and Reading view. It uses native Obsidian CSS variables and needs no additional plugins, downloaded fonts, or network services.
 
-Current public version: **0.1.0**. Requires **Obsidian 1.13.0 or later**.
+Current public version: **0.1.1**. Requires **Obsidian 1.13.0 or later**.
 
 ## Preview
 
