@@ -44,7 +44,14 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release upload "$RELEASE_TAG" manifest.json theme.css --clobber
+            existing_assets=$(gh release view "$RELEASE_TAG" --json assets --jq '.assets[].name')
+            for file in manifest.json theme.css; do
+              if printf '%s\n' "$existing_assets" | grep -Fxq "$file"; then
+                echo "Checking existing asset: $file"
+              else
+                gh release upload "$RELEASE_TAG" "$file"
+              fi
+            done
           else
             gh release create "$RELEASE_TAG" \
               --verify-tag \
