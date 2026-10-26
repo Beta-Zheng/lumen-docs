@@ -6,9 +6,9 @@ Lumen Docs is a lightweight Obsidian theme for clear, comfortable document readi
 
 The theme supports light and dark appearances in Live Preview and Reading view. It uses native Obsidian CSS variables and needs no additional plugins, downloaded fonts, or network services.
 
-Current public version: **0.1.1**. Requires **Obsidian 1.13.0 or later**.
+Version: **0.1.2**. Requires **Obsidian 1.13.0 or later**.
 
-The previews and features below describe the current repository version. To use these refinements before the next release, download [theme.css](theme.css) and [manifest.json](manifest.json) from the default branch.
+The previews and features below describe version **0.1.2**. Download both installation files from the matching GitHub Release. If that release is not yet published, download [theme.css](theme.css) and [manifest.json](manifest.json) from the default branch.
 
 ## Preview
 
@@ -28,7 +28,7 @@ The previews and features below describe the current repository version. To use 
 
 ### Manual installation
 
-1. Download **`theme.css` and `manifest.json`** from the latest GitHub Release for the released appearance, or from the default branch for the appearance shown on this page. Use both files from the same source. The source archive is optional; the two files are sufficient to install the theme.
+1. Download **`theme.css` and `manifest.json`** from the GitHub Release matching the version above, or from the default branch if that release is not yet published. Use both files from the same source. The source archive is optional; the two files are sufficient to install the theme.
 2. Create `.obsidian/themes/Lumen Docs/` inside your vault and copy both files there. If your vault uses a custom configuration folder, use that folder instead of `.obsidian`.
 3. Open **Settings → Appearance → Themes** and select **Lumen Docs**. Reopen Settings or restart Obsidian if the theme does not appear immediately.
 4. Choose light, dark, or your preferred system appearance.

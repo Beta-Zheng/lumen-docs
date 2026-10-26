@@ -6,9 +6,9 @@
 
 支持浅色与深色外观，适用于实时预览和阅读视图。主题使用原生 CSS 变量，不需要额外插件、字体或网络服务。
 
-当前公开版本：**0.1.1**。
+当前版本：**0.1.2**。
 
-以下预览和功能说明对应仓库当前版本。在下个版本发布前，可从默认分支下载 [theme.css](theme.css) 和 [manifest.json](manifest.json)，使用本页展示的新样式。
+以下预览和功能说明对应 **0.1.2**。请从对应版本的 GitHub Release 下载两个安装文件；如果该版本尚未公开发布，可从默认分支下载 [theme.css](theme.css) 和 [manifest.json](manifest.json)。
 
 ## 预览
 
@@ -30,7 +30,7 @@
 
 ### 手动安装
 
-1. 使用已发布的样式时，从本仓库的 Release 下载 `theme.css` 和 `manifest.json`；使用本页展示的新样式时，从默认分支下载这两个文件。请使用同一来源的两个安装文件。
+1. 从本仓库与上述版本一致的 GitHub Release 下载 `theme.css` 和 `manifest.json`；如果该版本尚未公开发布，可从默认分支下载。请使用同一来源的两个安装文件。
 2. 在笔记库配置目录中创建 `.obsidian/themes/Lumen Docs/`，将两个文件放入其中。
 3. 打开 Obsidian「设置 → 外观 → 主题」，选择 **Lumen Docs**。如果没有出现在列表中，重新打开设置或重启 Obsidian。
 4. 按偏好选择浅色、深色或跟随系统外观。
