@@ -45,10 +45,23 @@ settings:
     allowEmpty: false
     default: lumen-callout-soft
     options:
-      - label: 语义底色 · Color fill
+      - label: 清晰柔和 · Soft fill
         value: lumen-callout-soft
+      - label: 重点强调 · Strong fill
+        value: lumen-callout-strong
       - label: 简洁线框 · Outline
         value: lumen-callout-outline
+  - id: lumen-interface-density
+    title: 界面密度 · Interface density
+    description: 仅调整桌面文件列表与大纲的行间距，不改变正文或移动端触控区域。Desktop file and outline spacing; note typography and mobile targets are unchanged.
+    type: class-select
+    allowEmpty: false
+    default: lumen-ui-comfortable
+    options:
+      - label: 舒适 · Comfortable
+        value: lumen-ui-comfortable
+      - label: 紧凑 · Compact
+        value: lumen-ui-compact
   - id: lumen-striped-tables
     title: 表格斑马纹 · Alternating table rows
     description: 也可用同名 cssclasses 仅应用于单篇笔记。Also available as a per-note cssclasses option.
@@ -67,7 +80,7 @@ body {
   --h3-size: calc(1.25em * var(--lumen-heading-scale, 1));
   --h4-size: calc(1.125em * var(--lumen-heading-scale, 1));
   --h5-size: calc(1em * var(--lumen-heading-scale, 1));
-  --h6-size: calc(.9375em * var(--lumen-heading-scale, 1));
+  --h6-size: calc(1em * var(--lumen-heading-scale, 1));
   --h1-weight: 650;
   --h2-weight: 600;
   --h3-weight: 600;
@@ -87,7 +100,7 @@ body {
   --h5-letter-spacing: 0;
   --h6-letter-spacing: 0;
   --h1-color: var(--lumen-heading-primary);
-  --h2-color: var(--text-accent);
+  --h2-color: var(--lumen-heading-section);
   --h3-color: var(--lumen-heading-secondary);
   --h4-color: var(--text-normal);
   --h5-color: var(--text-normal);
@@ -123,13 +136,13 @@ body {
   --callout-title-padding: 0;
   --callout-content-padding: 0;
   --callout-radius: 8px;
-  --callout-title-size: 15px;
+  --callout-title-size: .9375em;
   --callout-title-weight: 650;
   --callout-border-width: 1px;
   --callout-border-opacity: .2;
   --blockquote-font-style: normal;
   --blockquote-color: var(--text-normal);
-  --blockquote-border-thickness: 3px;
+  --blockquote-border-thickness: 2px;
   --blockquote-border-color: var(--lumen-quote-border);
   --blockquote-background-color: var(--lumen-quote-background);
   --lumen-table-cell-padding: 8px 12px;
@@ -162,6 +175,12 @@ body {
   --nav-item-weight-active: 500;
   --nav-indentation-guide-color: var(--background-modifier-border);
   --lumen-navigation-edge: 2px;
+  --lumen-navigation-padding: 5px;
+  --menu-background: var(--background-primary);
+  --menu-border-color: var(--background-modifier-border);
+  --modal-sidebar-background: var(--background-secondary);
+  --modal-border-color: var(--background-modifier-border);
+  --prompt-border-color: var(--background-modifier-border);
   --tab-text-color: var(--text-muted);
   --tab-text-color-focused-active: var(--text-normal);
   --tab-text-color-focused-active-current: var(--text-normal);
@@ -209,8 +228,8 @@ body {
   --background-primary-alt: #f5f8ff;
   --background-secondary: #eef4ff;
   --background-secondary-alt: #e4edfb;
-  --background-modifier-border: #cddbf1;
-  --background-modifier-border-hover: #9db8e0;
+  --background-modifier-border: #d8e0ed;
+  --background-modifier-border-hover: #adbed8;
   --background-modifier-border-focus: #2f6feb;
   --background-modifier-hover: rgb(37 99 235 / 8%);
   --background-modifier-form-field: var(--background-primary);
@@ -231,14 +250,19 @@ body {
   --accent-l: 53%;
   --color-accent: #2563eb;
   --lumen-heading-primary: #173b70;
+  --lumen-heading-section: #2458ae;
   --lumen-heading-secondary: #315c8f;
   --lumen-table-header: #e4edff;
   --lumen-tag-tint: 12%;
   --lumen-quote-border: #3976e5;
-  --lumen-quote-background: #edf3ff;
+  --lumen-quote-background: #f3f6fc;
   --lumen-highlight: #ffe38c;
-  --lumen-callout-tint: 11%;
-  --lumen-callout-border: 40%;
+  --lumen-callout-tint: 9%;
+  --lumen-callout-border: 18%;
+  --lumen-callout-alert-tint: 11%;
+  --lumen-callout-alert-border: 32%;
+  --lumen-callout-strong-tint: 11%;
+  --lumen-callout-strong-border: 40%;
   --code-background: #eff4fc;
   --nav-item-background-active: #dce8ff;
   --nav-item-color-active: #1749ab;
@@ -281,8 +305,8 @@ body {
   --background-primary-alt: #1e2b42;
   --background-secondary: #111a2b;
   --background-secondary-alt: #1b2a42;
-  --background-modifier-border: #344968;
-  --background-modifier-border-hover: #4b6284;
+  --background-modifier-border: #344258;
+  --background-modifier-border-hover: #506480;
   --background-modifier-border-focus: #91b9ff;
   --background-modifier-hover: rgb(145 185 255 / 10%);
   --background-modifier-form-field: var(--background-primary);
@@ -303,14 +327,19 @@ body {
   --accent-l: 51%;
   --color-accent: #91b9ff;
   --lumen-heading-primary: #d1e2ff;
+  --lumen-heading-section: #a3c2f5;
   --lumen-heading-secondary: #b7cff2;
   --lumen-table-header: #223d61;
   --lumen-tag-tint: 18%;
   --lumen-quote-border: #6b9fff;
-  --lumen-quote-background: #1b2f4c;
+  --lumen-quote-background: #1d2a3e;
   --lumen-highlight: #5a4519;
-  --lumen-callout-tint: 15%;
-  --lumen-callout-border: 48%;
+  --lumen-callout-tint: 12%;
+  --lumen-callout-border: 24%;
+  --lumen-callout-alert-tint: 15%;
+  --lumen-callout-alert-border: 38%;
+  --lumen-callout-strong-tint: 15%;
+  --lumen-callout-strong-border: 48%;
   --code-background: #1e2b42;
   --nav-item-background-active: #253f66;
   --nav-item-color-active: #bbd4ff;
@@ -343,6 +372,22 @@ body {
 .nav-file-title, .nav-folder-title {
   font-size: var(--font-ui-small);
   border-radius: 5px;
+}
+
+body.lumen-ui-compact:not(.is-mobile) {
+  --lumen-navigation-padding: 3px;
+}
+
+.suggestion-container {
+  background-color: var(--background-primary);
+  border-color: var(--background-modifier-border);
+  border-radius: var(--radius-m);
+}
+
+.suggestion-item.is-selected,
+.menu-item.selected:not(.is-disabled,.is-label,.is-warning) {
+  color: var(--nav-item-color-active);
+  background-color: var(--nav-item-background-active);
 }
 
 .nav-file-title.is-active {
@@ -380,6 +425,13 @@ body.mod-rtl, body[dir="rtl"] {
 .tree-item-self:focus-visible {
   outline: 2px solid var(--background-modifier-border-focus);
   outline-offset: -2px;
+}
+
+/* Only row padding changes: native indentation, folding and mobile sizing remain. */
+
+body:not(.is-mobile) :is(.nav-file-title,.nav-folder-title),
+body:not(.is-mobile) .workspace-leaf-content[data-type="outline"] .tree-item-self {
+  padding-block: var(--lumen-navigation-padding);
 }
 
 .search-result-file-title {
@@ -441,6 +493,10 @@ body.mod-rtl, body[dir="rtl"] {
   margin-block: var(--heading-spacing) calc(var(--p-spacing) * .75);
 }
 
+.markdown-rendered :is(h4,h5,h6) {
+  margin-block-start: calc(var(--p-spacing) * 1.5);
+}
+
 .markdown-rendered p, .markdown-rendered :is(ul,ol) {
   margin-block: var(--p-spacing);
 }
@@ -488,12 +544,23 @@ body.mod-rtl, body[dir="rtl"] {
 
 .callout {
   margin: var(--p-spacing) 0;
-  border-inline-start-width: 4px;
+  border-inline-start-width: 3px;
   border-color: color-mix(in srgb, var(--callout-color) var(--lumen-callout-border), transparent);
   border-inline-start-color: var(--callout-color);
   background-color: color-mix(in srgb, var(--callout-color) var(--lumen-callout-tint), var(--background-primary));
   box-shadow: none;
   mix-blend-mode: normal;
+}
+
+/* Risks keep more visual weight than routine context, including native aliases. */
+
+.callout:is([data-callout="warning"],[data-callout="caution"],[data-callout="attention"],
+[data-callout="danger"],[data-callout="error"],[data-callout="failure"],
+[data-callout="fail"],[data-callout="missing"],[data-callout="bug"]) {
+  border-inline-start-width: 4px;
+  border-color: color-mix(in srgb, var(--callout-color) var(--lumen-callout-alert-border), transparent);
+  border-inline-start-color: var(--callout-color);
+  background-color: color-mix(in srgb, var(--callout-color) var(--lumen-callout-alert-tint), var(--background-primary));
 }
 
 body.lumen-callout-outline {
@@ -507,14 +574,14 @@ body.lumen-callout-outline {
 }
 
 .callout-icon {
-  flex: 0 0 18px;
+  flex: 0 0 1.2em;
   display: flex;
   align-items: center;
 }
 
 .callout-icon .svg-icon {
-  width: 18px;
-  height: 18px;
+  width: 1.2em;
+  height: 1.2em;
 }
 
 .callout-content {
@@ -538,6 +605,13 @@ body.lumen-callout-outline {
   margin-block: 10px 0;
 }
 
+body.lumen-callout-strong .callout {
+  border-inline-start-width: 4px;
+  border-color: color-mix(in srgb, var(--callout-color) var(--lumen-callout-strong-border), transparent);
+  border-inline-start-color: var(--callout-color);
+  background-color: color-mix(in srgb, var(--callout-color) var(--lumen-callout-strong-tint), var(--background-primary));
+}
+
 body.lumen-callout-outline .callout {
   background-color: transparent;
 }
@@ -547,7 +621,7 @@ body.lumen-callout-outline .callout {
 
 .callout[data-callout="note"][data-callout-metadata="compact"]:not(.is-collapsible) {
   display: grid;
-  grid-template-columns: 20px minmax(0, 1fr);
+  grid-template-columns: 1.25em minmax(0, 1fr);
   gap: 8px;
 }
 

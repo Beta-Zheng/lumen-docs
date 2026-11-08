@@ -2,33 +2,37 @@
 
 [English](README.md) · [简体中文](README.zh-CN.md)
 
+[![Obsidian downloads](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Freleases.obsidian.md%2Fstats%2Ftheme&query=%24%5B%22Lumen%20Docs%22%5D.download&label=Obsidian%20downloads&color=2563eb&logo=obsidian&logoColor=white&style=flat-square)](https://community.obsidian.md/themes/lumen-docs)
+
 Lumen Docs is a lightweight Obsidian theme for clear, comfortable document reading. Cloud-white surfaces, ink-blue titles, blue chapter headings, and distinct semantic callouts give documents a recognizable visual identity. Dark appearance uses a midnight-blue palette.
 
 The theme supports light and dark appearances in Live Preview and Reading view. It uses native Obsidian CSS variables and needs no additional plugins, downloaded fonts, or network services.
 
 Version: **0.1.2**. Requires **Obsidian 1.13.0 or later**.
 
-The previews and features below describe version **0.1.2**. Download both installation files from the matching GitHub Release. If that release is not yet published, download [theme.css](theme.css) and [manifest.json](manifest.json) from the default branch.
+The previews and features below describe the current repository, including unreleased refinements after **0.1.2**. For that appearance, download [theme.css](theme.css) and [manifest.json](manifest.json) from the default branch; GitHub Release **0.1.2** retains its published appearance.
 
 ## Preview
+
+Previews use isolated sample content rendered in Obsidian. The workspace component views show native interface elements with sample file names.
 
 ### Light
 
 ![Lumen Docs light appearance](screenshots/light.png)
 
-[Content details](screenshots/details-light.png) · [Semantic callouts](screenshots/callouts-light.png)
+[Content details](screenshots/details-light.png) · [Semantic callouts](screenshots/callouts-light.png) · [Workspace components](screenshots/interface-light.png)
 
 ### Dark
 
 ![Lumen Docs dark appearance](screenshots/dark.png)
 
-[Content details](screenshots/details-dark.png) · [Semantic callouts](screenshots/callouts-dark.png)
+[Content details](screenshots/details-dark.png) · [Semantic callouts](screenshots/callouts-dark.png) · [Workspace components](screenshots/interface-dark.png)
 
 ## Installation
 
 ### Manual installation
 
-1. Download **`theme.css` and `manifest.json`** from the GitHub Release matching the version above, or from the default branch if that release is not yet published. Use both files from the same source. The source archive is optional; the two files are sufficient to install the theme.
+1. Download **`theme.css` and `manifest.json`** from a GitHub Release for its published appearance, or from the default branch for the refinements shown here. Use both files from the same source. The source archive is optional; the two files are sufficient to install the theme.
 2. Create `.obsidian/themes/Lumen Docs/` inside your vault and copy both files there. If your vault uses a custom configuration folder, use that folder instead of `.obsidian`.
 3. Open **Settings → Appearance → Themes** and select **Lumen Docs**. Reopen Settings or restart Obsidian if the theme does not appear immediately.
 4. Choose light, dark, or your preferred system appearance.
@@ -46,12 +50,12 @@ Installation does not require Node.js or community plugins. To update, replace b
 
 ## Design
 
-- **Blue identity:** ink-blue titles, blue chapter headings, and slate-blue subheadings give documents a consistent hierarchy.
+- **Blue identity:** ink-blue titles, deeper blue chapter headings, and slate-blue subheadings establish hierarchy. Chapter headings use their own color rather than sharing the brighter link color; the smallest heading stays at the body text size.
 - **Comfortable layout:** the default readable width is 800px and line height is 1.7. Font family and text size follow your Obsidian settings.
 - **Purposeful accents:** blue identifies links, checked tasks, and interactive states; amber-yellow marks highlighted text.
-- **Clear structure:** blue quote rules, blue-tinted table headers, and cloud-blue sidebars make the document structure visible.
+- **Clear structure:** thin blue quote rules, blue-tinted table headers, and cloud-blue sidebars make the document structure visible. Neutral structural borders keep ordinary content from competing for attention.
 - **Readable code:** keywords, functions, strings, values, and comments have distinct roles on a neutral background.
-- **Consistent details:** tags, note embeds, footnotes, input fields, and keyboard focus share cloud-blue surfaces and clear blue accents.
+- **Consistent details:** tags, note embeds, footnotes, menus, suggestions, and keyboard focus share quiet surfaces and clear blue accents. Optional desktop navigation density changes file and outline row spacing without shrinking note text or mobile targets.
 - **Responsive spacing:** narrower screens use smaller page margins, compact callout padding, and wrapping for long titles and tags.
 - **Native behavior:** task controls, links, callout folding, custom titles, and nested callouts retain their Obsidian behavior.
 
@@ -59,9 +63,9 @@ Completed tasks remain readable in gray. Selected text uses a clear foreground o
 
 ## Callouts
 
-Callouts use a defined semantic background, a solid 4px color bar, and stronger title/icon colors while keeping their body text neutral. Information is blue, tips teal, success green, warnings amber, danger red, and examples purple. Nested filled callouts keep their own background rather than accumulating translucent tints.
+Routine callouts use a soft semantic background, a solid 3px color bar, and a lighter outline while keeping their body text neutral. Warning and danger types retain a stronger fill and 4px bar so risks stand out from routine context. Information is blue, tips teal, success green, warnings amber, danger red, and examples purple. Titles and icons scale with the callout's text size. Nested filled callouts keep their own background rather than accumulating translucent tints.
 
-Choose **Color fill** or **Outline** in Style Settings. Both appearances preserve the semantic title color, custom titles, nesting, and folding. Built-in aliases follow their native type color; custom types can keep their own `--callout-color` and `--callout-icon`. Ordinary blockquotes use readable body text, a blue rule, and a blue-tinted surface.
+Choose **Soft fill** (default), **Strong fill**, or **Outline** in Style Settings. Strong fill retains the more prominent 4px bars and colored borders of the earlier design. All three appearances preserve the semantic title color, custom titles, nesting, and folding. Built-in aliases follow their native type color; custom types can keep their own `--callout-color` and `--callout-icon`. Ordinary blockquotes use readable body text, a thin blue rule, and a quiet blue-gray surface.
 
 For an information block and a collapsible warning:
 
@@ -93,7 +97,7 @@ Compact styling applies only to non-collapsible `note` callouts and visually hid
 | Body text | `#1F2329` | `#E2EAF6` |
 | Secondary text | `#596B85` | `#AEBBD0` |
 | Document title | `#173B70` | `#D1E2FF` |
-| Chapter headings | `#1F5ED6` | `#91B9FF` |
+| Chapter headings | `#2458AE` | `#A3C2F5` |
 | Table header background | `#E4EDFF` | `#223D61` |
 | Links and text accents | `#1F5ED6` | `#91B9FF` |
 | Primary button fill | `#2563EB` | `#3B6ED6` |
@@ -136,7 +140,8 @@ The optional **Style Settings** plugin provides these controls under **Lumen Doc
 - Line height: 1.4–2.2, default 1.7.
 - Paragraph spacing: 0.5–1.2 times the body text size, default 0.8. The spacing follows your text size rather than a heading's size.
 - Heading scale: 0.9–1.2, default 1. Scales all six levels together in Live Preview and Reading view.
-- Callout style: **Color fill** (default) or **Outline**.
+- Callout style: **Soft fill** (default), **Strong fill**, or **Outline**. Existing `lumen-callout-soft` settings remain valid.
+- Interface density: **Comfortable** (default) or **Compact** for desktop file and outline rows. Note typography and native mobile touch spacing are unchanged.
 - Alternating table rows: off by default. Enable globally here or use `lumen-striped-tables` for an individual note.
 
 Without that plugin, the default appearance works normally. You can also create `.obsidian/snippets/lumen-custom.css` and enable it in **Settings → Appearance → CSS snippets**:
