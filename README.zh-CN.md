@@ -8,25 +8,25 @@
 
 支持浅色与深色外观，适用于实时预览和阅读视图。主题使用原生 CSS 变量，不需要额外插件、字体或网络服务。
 
-当前版本：**0.1.2**。
+当前版本：**0.1.3**。
 
-以下预览和功能说明对应仓库当前代码，包含 **0.1.2 之后尚未发布的优化**。体验本页样式时，请从默认分支下载 [theme.css](theme.css) 和 [manifest.json](manifest.json)；GitHub Release **0.1.2** 保留已发布时的外观。
+0.1.3 带来接近白色的浅色侧栏，以及更柔和的文档排版。安装文件可从 [Releases](https://github.com/Beta-Zheng/lumen-docs/releases/latest) 下载。
 
 ## 预览
 
-预览使用在 Obsidian 中渲染的独立示例内容；工作区组件预览采用原生界面元素与示例文件名。
+以下截图使用 Lumen Docs 0.1.3，在 Obsidian 1.15.0 的独立示例库中截取。文件名与文档均为演示内容。
 
 ### 浅色
 
-![Lumen Docs 浅色外观](screenshots/light.png)
+![Lumen Docs 0.1.3 浅色工作区与接近白色的侧栏](screenshots/interface-light.png)
 
-[内容细节](screenshots/details-light.png) · [高亮块配色](screenshots/callouts-light.png) · [工作区组件](screenshots/interface-light.png)
+[文档排版](screenshots/light.png) · [内容细节](screenshots/details-light.png) · [高亮块配色](screenshots/callouts-light.png)
 
 ### 深色
 
-![Lumen Docs 深色外观](screenshots/dark.png)
+![Lumen Docs 0.1.3 深色工作区](screenshots/interface-dark.png)
 
-[内容细节](screenshots/details-dark.png) · [高亮块配色](screenshots/callouts-dark.png) · [工作区组件](screenshots/interface-dark.png)
+[文档排版](screenshots/dark.png) · [内容细节](screenshots/details-dark.png) · [高亮块配色](screenshots/callouts-dark.png)
 
 ## 安装与使用
 
@@ -34,7 +34,7 @@
 
 ### 手动安装
 
-1. 从本仓库的 GitHub Release 下载 `theme.css` 和 `manifest.json`，使用该版本的已发布样式；体验本页所示优化时，从默认分支下载。请使用同一来源的两个安装文件。
+1. 从同一个 [GitHub Release](https://github.com/Beta-Zheng/lumen-docs/releases/latest) 下载 `theme.css` 和 `manifest.json`。
 2. 在笔记库配置目录中创建 `.obsidian/themes/Lumen Docs/`，将两个文件放入其中。
 3. 打开 Obsidian「设置 → 外观 → 主题」，选择 **Lumen Docs**。如果没有出现在列表中，重新打开设置或重启 Obsidian。
 4. 按偏好选择浅色、深色或跟随系统外观。
@@ -98,7 +98,7 @@ console.log(message);
 - **引用**：细蓝线与灰蓝底色，正文保持清晰，保留用户明确写下的斜体。
 - **表格**：浅蓝表头、清晰网格线和单元格留白建立结构。
 - **代码**：中性底色搭配按角色区分的语法色；行内代码保持安静。
-- **界面**：云蓝侧栏、明确的选中底色与蓝色活动标记，与正文保持清楚的层次。
+- **界面**：浅色侧栏接近白色，配合淡蓝灰选中底色与蓝色活动标记；深色保留夜蓝层次。
 - **细节**：标签、笔记嵌入、脚注、菜单、候选项与键盘焦点采用同一套灰阶和蓝色强调；结构边框使用中性色，避免处处强调。
 - **密度**：桌面文件列表与大纲可选择舒适或紧凑行间距，正文排版与移动端触控尺寸保持原生行为。
 - **窄屏**：缩小页边距和提示块内边距，长标题与标签可自然换行。
@@ -127,7 +127,7 @@ console.log(message);
 | 用途 | 浅色 | 深色 |
 | --- | --- | --- |
 | 正文背景 | `#FFFFFF` | `#172033` |
-| 侧栏背景 | `#EEF4FF` | `#111A2B` |
+| 侧栏背景 | `#F9FBFD` | `#111A2B` |
 | 正文文字 | `#1F2329` | `#E2EAF6` |
 | 次要文字 | `#596B85` | `#AEBBD0` |
 | 文档标题 | `#173B70` | `#D1E2FF` |

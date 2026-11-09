@@ -8,31 +8,31 @@ Lumen Docs is a lightweight Obsidian theme for clear, comfortable document readi
 
 The theme supports light and dark appearances in Live Preview and Reading view. It uses native Obsidian CSS variables and needs no additional plugins, downloaded fonts, or network services.
 
-Version: **0.1.2**. Requires **Obsidian 1.13.0 or later**.
+Version: **0.1.3**. Requires **Obsidian 1.13.0 or later**.
 
-The previews and features below describe the current repository, including unreleased refinements after **0.1.2**. For that appearance, download [theme.css](theme.css) and [manifest.json](manifest.json) from the default branch; GitHub Release **0.1.2** retains its published appearance.
+Version 0.1.3 adds near-white light sidebars and softer document styling. Download the installation files from [Releases](https://github.com/Beta-Zheng/lumen-docs/releases/latest).
 
 ## Preview
 
-Previews use isolated sample content rendered in Obsidian. The workspace component views show native interface elements with sample file names.
+Captured with Lumen Docs 0.1.3 in Obsidian 1.15.0 using an isolated sample vault. All file names and documents are demonstration content.
 
 ### Light
 
-![Lumen Docs light appearance](screenshots/light.png)
+![Lumen Docs 0.1.3 light workspace with near-white sidebars](screenshots/interface-light.png)
 
-[Content details](screenshots/details-light.png) · [Semantic callouts](screenshots/callouts-light.png) · [Workspace components](screenshots/interface-light.png)
+[Document layout](screenshots/light.png) · [Content details](screenshots/details-light.png) · [Semantic callouts](screenshots/callouts-light.png)
 
 ### Dark
 
-![Lumen Docs dark appearance](screenshots/dark.png)
+![Lumen Docs 0.1.3 dark workspace](screenshots/interface-dark.png)
 
-[Content details](screenshots/details-dark.png) · [Semantic callouts](screenshots/callouts-dark.png) · [Workspace components](screenshots/interface-dark.png)
+[Document layout](screenshots/dark.png) · [Content details](screenshots/details-dark.png) · [Semantic callouts](screenshots/callouts-dark.png)
 
 ## Installation
 
 ### Manual installation
 
-1. Download **`theme.css` and `manifest.json`** from a GitHub Release for its published appearance, or from the default branch for the refinements shown here. Use both files from the same source. The source archive is optional; the two files are sufficient to install the theme.
+1. Download **`theme.css` and `manifest.json`** from the same [GitHub Release](https://github.com/Beta-Zheng/lumen-docs/releases/latest). The source archive is optional; the two files are sufficient to install the theme.
 2. Create `.obsidian/themes/Lumen Docs/` inside your vault and copy both files there. If your vault uses a custom configuration folder, use that folder instead of `.obsidian`.
 3. Open **Settings → Appearance → Themes** and select **Lumen Docs**. Reopen Settings or restart Obsidian if the theme does not appear immediately.
 4. Choose light, dark, or your preferred system appearance.
@@ -53,7 +53,7 @@ Installation does not require Node.js or community plugins. To update, replace b
 - **Blue identity:** ink-blue titles, deeper blue chapter headings, and slate-blue subheadings establish hierarchy. Chapter headings use their own color rather than sharing the brighter link color; the smallest heading stays at the body text size.
 - **Comfortable layout:** the default readable width is 800px and line height is 1.7. Font family and text size follow your Obsidian settings.
 - **Purposeful accents:** blue identifies links, checked tasks, and interactive states; amber-yellow marks highlighted text.
-- **Clear structure:** thin blue quote rules, blue-tinted table headers, and cloud-blue sidebars make the document structure visible. Neutral structural borders keep ordinary content from competing for attention.
+- **Clear structure:** thin blue quote rules, blue-tinted table headers, and near-white light sidebars make the document structure visible. Neutral structural borders keep ordinary content from competing for attention.
 - **Readable code:** keywords, functions, strings, values, and comments have distinct roles on a neutral background.
 - **Consistent details:** tags, note embeds, footnotes, menus, suggestions, and keyboard focus share quiet surfaces and clear blue accents. Optional desktop navigation density changes file and outline row spacing without shrinking note text or mobile targets.
 - **Responsive spacing:** narrower screens use smaller page margins, compact callout padding, and wrapping for long titles and tags.
@@ -93,7 +93,7 @@ Compact styling applies only to non-collapsible `note` callouts and visually hid
 | Role | Light | Dark |
 | --- | --- | --- |
 | Document background | `#FFFFFF` | `#172033` |
-| Sidebar background | `#EEF4FF` | `#111A2B` |
+| Sidebar background | `#F9FBFD` | `#111A2B` |
 | Body text | `#1F2329` | `#E2EAF6` |
 | Secondary text | `#596B85` | `#AEBBD0` |
 | Document title | `#173B70` | `#D1E2FF` |

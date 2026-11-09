@@ -1,5 +1,5 @@
 /*
- * Lumen Docs 0.1.2
+ * Lumen Docs 0.1.3
  * Cloud white, ink-blue headings, and clear semantic color for Obsidian.
  * Copyright (c) 2026 Zheng and Lumen Docs contributors. MIT License.
  */
@@ -367,6 +367,33 @@ body {
 
 .workspace-ribbon, .workspace-split.mod-left-split, .workspace-split.mod-right-split {
   background: var(--background-secondary);
+}
+
+/* A trace of cool color keeps light sidebars close to the white document. */
+.theme-light :is(.workspace-ribbon, .workspace-split.mod-left-split, .workspace-split.mod-right-split) {
+  --background-secondary: #f9fbfd;
+  --background-secondary-alt: #f2f6fa;
+  --background-modifier-border: #e9eef4;
+  --background-modifier-border-hover: #d7e1ed;
+  --divider-color: #e9eef4;
+  --background-modifier-hover: rgb(37 99 235 / 4%);
+  --nav-item-background-hover: rgb(37 99 235 / 4%);
+  --nav-item-background-active: #edf3fb;
+  --nav-indentation-guide-color: #e7edf4;
+  --tab-container-background: #f9fbfd;
+  --tab-background-active: #edf3fb;
+  --scrollbar-bg: rgb(89 107 133 / 4%);
+  --scrollbar-thumb-bg: rgb(89 107 133 / 14%);
+  --scrollbar-active-thumb-bg: rgb(89 107 133 / 24%);
+}
+
+.theme-light :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header-container {
+  background: var(--background-secondary);
+  border-color: var(--background-modifier-border);
+}
+
+.theme-light :is(.workspace-split.mod-left-split, .workspace-split.mod-right-split) .workspace-tab-header.is-active .workspace-tab-header-inner {
+  background: var(--nav-item-background-active);
 }
 
 .nav-file-title, .nav-folder-title {

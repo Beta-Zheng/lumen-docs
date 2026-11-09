@@ -20,7 +20,7 @@
 node build.cjs
 ```
 
-输出目录为 `release/0.1.1/`（随清单版本变化）：
+输出目录为 `release/<version>/`（随清单版本变化）：
 
 - `theme.css`、`manifest.json`：可直接上传 GitHub Release 的两个文件。
 - `Lumen Docs/`：包含安装文件、说明和许可的手动安装文件夹。
