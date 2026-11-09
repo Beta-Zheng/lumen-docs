@@ -18,15 +18,15 @@ Captured with Lumen Docs 0.1.3 in Obsidian 1.15.0 using an isolated sample vault
 
 ### Light
 
-![Lumen Docs 0.1.3 light workspace with near-white sidebars](screenshots/interface-light.png)
+![Lumen Docs 0.1.3 light workspace with near-white sidebars](screenshots/interface-light.png?v=0.1.3-clean)
 
-[Document layout](screenshots/light.png) · [Content details](screenshots/details-light.png) · [Semantic callouts](screenshots/callouts-light.png)
+[Document layout](screenshots/light.png?v=0.1.3-clean) · [Content details](screenshots/details-light.png?v=0.1.3-clean) · [Semantic callouts](screenshots/callouts-light.png?v=0.1.3-clean)
 
 ### Dark
 
-![Lumen Docs 0.1.3 dark workspace](screenshots/interface-dark.png)
+![Lumen Docs 0.1.3 dark workspace](screenshots/interface-dark.png?v=0.1.3-clean)
 
-[Document layout](screenshots/dark.png) · [Content details](screenshots/details-dark.png) · [Semantic callouts](screenshots/callouts-dark.png)
+[Document layout](screenshots/dark.png?v=0.1.3-clean) · [Content details](screenshots/details-dark.png?v=0.1.3-clean) · [Semantic callouts](screenshots/callouts-dark.png?v=0.1.3-clean)
 
 ## Installation
 

@@ -18,15 +18,15 @@
 
 ### 浅色
 
-![Lumen Docs 0.1.3 浅色工作区与接近白色的侧栏](screenshots/interface-light.png)
+![Lumen Docs 0.1.3 浅色工作区与接近白色的侧栏](screenshots/interface-light.png?v=0.1.3-clean)
 
-[文档排版](screenshots/light.png) · [内容细节](screenshots/details-light.png) · [高亮块配色](screenshots/callouts-light.png)
+[文档排版](screenshots/light.png?v=0.1.3-clean) · [内容细节](screenshots/details-light.png?v=0.1.3-clean) · [高亮块配色](screenshots/callouts-light.png?v=0.1.3-clean)
 
 ### 深色
 
-![Lumen Docs 0.1.3 深色工作区](screenshots/interface-dark.png)
+![Lumen Docs 0.1.3 深色工作区](screenshots/interface-dark.png?v=0.1.3-clean)
 
-[文档排版](screenshots/dark.png) · [内容细节](screenshots/details-dark.png) · [高亮块配色](screenshots/callouts-dark.png)
+[文档排版](screenshots/dark.png?v=0.1.3-clean) · [内容细节](screenshots/details-dark.png?v=0.1.3-clean) · [高亮块配色](screenshots/callouts-dark.png?v=0.1.3-clean)
 
 ## 安装与使用
 
